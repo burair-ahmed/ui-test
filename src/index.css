@@ -1,0 +1,484 @@
+:root {
+  /* Colors sampled from source recording */
+  --color-navbar: #152021;      /* Charcoal with teal undertone */
+  --color-cream: #F6F0E7;       /* Warm off-white */
+  --color-footer: #1F1F1A;      /* Deep dark block */
+  --color-terracotta: #CE9D87;  /* Warm terracotta accent */
+  --color-navy-start: #04091A;  /* Navy dark block start */
+  --color-navy-end: #031522;    /* Navy dark block end */
+  --color-muted-nav: #323D3C;   /* Muted hover/active button */
+  
+  /* Text colors */
+  --text-dark: #152021;
+  --text-light: #F6F0E7;
+  --text-muted: #7E8E8D;
+  --text-terracotta: #CE9D87;
+  
+  /* Fonts */
+  --font-sans: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-page: 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navbar);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-nav);
+}
+
+/* Scroll Reveal Animations (Intersection Observer) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Horizontal slide reveal for special cards */
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-slide-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-slide-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Page Layout Wrappers */
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography styles */
+.display-title {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+@media (max-width: 768px) {
+  .display-title {
+    font-size: 3rem;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Progress slider styling */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 2rem;
+  font-family: var(--font-sans);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 2px;
+  background: rgba(21, 32, 33, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-navbar);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  min-width: 45px;
+}
+
+/* Button & Links utility */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-navbar);
+  color: var(--text-light);
+  padding: 12px 28px;
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-muted-nav);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-navbar);
+  color: var(--text-dark);
+  padding: 12px 28px;
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-navbar);
+  color: var(--text-light);
+}
+
+/* Layout helpers */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 1024px) {
+  .grid-container {
+    gap: 20px;
+    padding: 0 20px;
+  }
+}
+
+/* App Shell & Persistent Layout */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: var(--color-cream);
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px 0 18px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(21, 32, 33, 0.07);
+}
+
+.navbar-logo {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dark);
+  transition: var(--transition-smooth);
+}
+
+.navbar-logo.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-10px);
+}
+
+.navbar-logo.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navbar-utilities {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-util-btn {
+  color: rgba(21, 32, 33, 0.5);
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-util-btn:hover {
+  color: var(--color-navbar);
+  transform: scale(1.08);
+}
+
+/* Navbar center label (e.g. "Screenwriter") */
+.navbar-center-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: rgba(21, 32, 33, 0.55);
+  text-transform: uppercase;
+}
+
+/* ================================================
+   Category Side Rail — Separate Vertical Strips
+   Each category is its own thin column panel,
+   count at top, rotated label text running down.
+   ================================================ */
+.category-rail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;       /* strips sit side-by-side horizontally */
+  align-items: stretch;
+  z-index: 90;
+  padding-top: 48px;         /* clear the navbar */
+}
+
+/* One strip per category */
+.rail-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 36px;               /* thin column width */
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-left: 1px solid rgba(21, 32, 33, 0.08);
+  text-decoration: none;
+  background-color: var(--color-cream);
+  transition: background-color 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.rail-strip:last-child {
+  border-right: 1px solid rgba(21, 32, 33, 0.08);
+}
+
+.rail-strip:hover {
+  background-color: rgba(21, 32, 33, 0.04);
+}
+
+.rail-strip.active {
+  background-color: rgba(21, 32, 33, 0.05);
+}
+
+/* Active left border accent */
+.rail-strip.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-terracotta);
+}
+
+/* Count number at the top of each strip */
+.rail-strip-count {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(21, 32, 33, 0.45);
+  line-height: 1;
+  margin-bottom: 14px;
+  letter-spacing: 0;
+  transition: color 0.25s ease;
+}
+
+.rail-strip:hover .rail-strip-count,
+.rail-strip.active .rail-strip-count {
+  color: var(--color-navbar);
+}
+
+/* Rotated label text running downward */
+.rail-strip-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: capitalize;
+  color: rgba(21, 32, 33, 0.55);
+  white-space: nowrap;
+  writing-mode: vertical-rl;  /* native vertical text */
+  text-orientation: mixed;
+  transform: rotate(180deg);  /* flip so text reads bottom→up */
+  transition: color 0.25s ease;
+  line-height: 1;
+}
+
+.rail-strip:hover .rail-strip-label,
+.rail-strip.active .rail-strip-label {
+  color: var(--color-navbar);
+  font-weight: 600;
+}
+
+/* Adjust main content to make room for the 5 strips (5 × 36px = 180px) */
+.main-wrapper {
+  margin-top: 48px;
+  margin-right: 180px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-cream);
+  min-height: calc(100vh - 48px);
+}
+
+/* ---- Responsive: collapse rail on small screens ---- */
+@media (max-width: 900px) {
+  .category-rail {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    height: 56px;
+    padding-top: 0;
+    border-top: 1px solid rgba(21, 32, 33, 0.08);
+    z-index: 200;
+  }
+
+  .rail-strip {
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+    border-left: none;
+    border-right: 1px solid rgba(21, 32, 33, 0.08);
+    padding: 0 8px;
+  }
+
+  .rail-strip:last-child {
+    border-right: none;
+  }
+
+  .rail-strip.active::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+
+  .rail-strip-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.7rem;
+  }
+
+  .rail-strip-count {
+    margin-bottom: 0;
+  }
+
+  .main-wrapper {
+    margin-right: 0;
+    margin-bottom: 56px;
+  }
+}
