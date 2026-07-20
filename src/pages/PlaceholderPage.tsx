@@ -22,6 +22,7 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, count }
   // Custom mock contents for different categories to make the app feel alive
   const getCategoryContent = (): CardItem[] => {
     switch (title.toLowerCase()) {
+      case 'comic chapter 2':
       case 'movies':
         return [
           {
@@ -49,6 +50,7 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, count }
             imgLabel: 'OUTPOST SERIES'
           }
         ];
+      case 'comic chapter 3':
       case 'games':
         return [
           {
@@ -76,6 +78,7 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, count }
             imgLabel: 'EXODUS'
           }
         ];
+      case 'comic chapter 4':
       case 'theater':
         return [
           {
@@ -95,6 +98,7 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, count }
             imgLabel: 'DUSK IMMERSIVE'
           }
         ];
+      case 'comic chapter 5':
       case 'articles':
       default:
         return [
@@ -130,9 +134,13 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, count }
 
   const getCategoryIcon = () => {
     switch (title.toLowerCase()) {
+      case 'comic chapter 2':
       case 'movies': return <Film size={20} />;
+      case 'comic chapter 3':
       case 'games': return <Gamepad2 size={20} />;
+      case 'comic chapter 4':
       case 'theater': return <Landmark size={20} />;
+      case 'comic chapter 5':
       case 'articles':
       default:
         return <FileText size={20} />;

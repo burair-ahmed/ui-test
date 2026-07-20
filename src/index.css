@@ -417,6 +417,10 @@ button {
   font-weight: 600;
 }
 
+.rail-mobile-text {
+  display: none;
+}
+
 /* Adjust main content to make room for the 5 strips (5 × 36px = 180px) */
 .main-wrapper {
   margin-top: 48px;
@@ -471,6 +475,14 @@ button {
     writing-mode: horizontal-tb;
     transform: none;
     font-size: 0.7rem;
+  }
+
+  .rail-desktop-text {
+    display: none;
+  }
+
+  .rail-mobile-text {
+    display: inline;
   }
 
   .rail-strip-count {

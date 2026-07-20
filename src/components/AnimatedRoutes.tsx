@@ -19,10 +19,10 @@ export const AnimatedRoutes: React.FC = () => {
         <Route path="/books/:slug" element={<BookDetail />} />
         
         {/* Other Sections */}
-        <Route path="/movies" element={<PlaceholderPage title="Movies" count={3} />} />
-        <Route path="/games" element={<PlaceholderPage title="Games" count={5} />} />
-        <Route path="/theater" element={<PlaceholderPage title="Theater" count={2} />} />
-        <Route path="/articles" element={<PlaceholderPage title="Articles" count={47} />} />
+        <Route path="/movies" element={<PlaceholderPage title="Comic Chapter 2" count={3} />} />
+        <Route path="/games" element={<PlaceholderPage title="Comic Chapter 3" count={5} />} />
+        <Route path="/theater" element={<PlaceholderPage title="Comic Chapter 4" count={2} />} />
+        <Route path="/articles" element={<PlaceholderPage title="Comic Chapter 5" count={47} />} />
         
         {/* Catch-all fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />

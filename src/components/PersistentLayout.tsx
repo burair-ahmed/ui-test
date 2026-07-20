@@ -12,11 +12,11 @@ export const PersistentLayout: React.FC<PersistentLayoutProps> = ({ children }) 
 
   // Categories for the right vertical navigation rail
   const navItems = [
-    { label: 'Books', count: 9, path: '/books/metro-2033', activeMatch: '/books' },
-    { label: 'Movies', count: 3, path: '/movies', activeMatch: '/movies' },
-    { label: 'Games', count: 5, path: '/games', activeMatch: '/games' },
-    { label: 'Theater', count: 2, path: '/theater', activeMatch: '/theater' },
-    { label: 'Articles', count: 47, path: '/articles', activeMatch: '/articles' },
+    { label: 'Comic Chapter 1', count: 9, path: '/books/metro-2033', activeMatch: '/books' },
+    { label: 'Comic Chapter 2', count: 3, path: '/movies', activeMatch: '/movies' },
+    { label: 'Comic Chapter 3', count: 5, path: '/games', activeMatch: '/games' },
+    { label: 'Comic Chapter 4', count: 2, path: '/theater', activeMatch: '/theater' },
+    { label: 'Comic Chapter 5', count: 47, path: '/articles', activeMatch: '/articles' },
   ];
 
   // Utility checking if nav item matches current path
@@ -80,7 +80,10 @@ export const PersistentLayout: React.FC<PersistentLayoutProps> = ({ children }) 
               {/* Count at top */}
               <span className="rail-strip-count">{item.count}</span>
               {/* Rotated label running down */}
-              <span className="rail-strip-label">{item.label}</span>
+              <span className="rail-strip-label">
+                <span className="rail-desktop-text">{item.label}</span>
+                <span className="rail-mobile-text">{item.label.replace('Comic Chapter', 'Ch.')}</span>
+              </span>
             </Link>
           );
         })}

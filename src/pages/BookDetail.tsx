@@ -44,7 +44,7 @@ export const BookDetail: React.FC = () => {
       {/* Pinned Left Pagination Rail */}
       <aside className="left-pagination-rail">
         <div className="rail-label-vertical">
-          Books &middot; 9
+          Comic Chapter 1 &middot; 9
         </div>
         
         {/* Dot paginator representing the 9 books */}

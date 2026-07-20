@@ -28,18 +28,18 @@ const Reveal: React.FC<RevealProps> = ({ children, className = '', slide = 'up',
 
 /* ---------- News data ---------- */
 const newsItems = [
-  { thumb: '/assets/cover_metro2033.png', tags: ['Books'], date: 'May 31, 2026', headline: 'Dmitry Glukhovsky Begins Work on a New Book' },
-  { thumb: '/assets/cover_metro2034.png', tags: ['Movies', 'Updates'], date: 'May 15, 2026', headline: 'Screen Adaptation of «Metro 2033» Currently in Discussion' },
-  { thumb: '/assets/cover_metro2035.png', tags: ['Theater'], date: 'Apr 10, 2026', headline: 'Stage Premiere of TEXT Opens in Berlin' },
+  { thumb: '/assets/cover_metro2033.png', tags: ['Comic Chapter 1'], date: 'May 31, 2026', headline: 'Dmitry Glukhovsky Begins Work on a New Book' },
+  { thumb: '/assets/cover_metro2034.png', tags: ['Comic Chapter 2', 'Updates'], date: 'May 15, 2026', headline: 'Screen Adaptation of «Metro 2033» Currently in Discussion' },
+  { thumb: '/assets/cover_metro2035.png', tags: ['Comic Chapter 4'], date: 'Apr 10, 2026', headline: 'Stage Premiere of TEXT Opens in Berlin' },
 ];
 
 /* ---------- Works cycle tabs ---------- */
 const categories = [
   { name: 'Works',   icon: <Radio size={13} /> },
-  { name: 'Books',   icon: <BookOpen size={13} /> },
-  { name: 'Movies',  icon: <Film size={13} /> },
-  { name: 'Games',   icon: <Gamepad2 size={13} /> },
-  { name: 'Theater', icon: <Landmark size={13} /> },
+  { name: 'Comic Chapter 1',   icon: <BookOpen size={13} /> },
+  { name: 'Comic Chapter 2',  icon: <Film size={13} /> },
+  { name: 'Comic Chapter 3',   icon: <Gamepad2 size={13} /> },
+  { name: 'Comic Chapter 4', icon: <Landmark size={13} /> },
 ];
 
 export const Home: React.FC = () => {
@@ -283,10 +283,10 @@ export const Home: React.FC = () => {
           <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
             <h4>Sections</h4>
             <ul className="footer-links">
-              <li><Link to="/books/metro-2033">Books</Link></li>
-              <li><Link to="/movies">Movies</Link></li>
-              <li><Link to="/games">Games</Link></li>
-              <li><Link to="/theater">Theater</Link></li>
+              <li><Link to="/books/metro-2033">Comic Chapter 1</Link></li>
+              <li><Link to="/movies">Comic Chapter 2</Link></li>
+              <li><Link to="/games">Comic Chapter 3</Link></li>
+              <li><Link to="/theater">Comic Chapter 4</Link></li>
             </ul>
           </div>
           <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
