@@ -137,187 +137,188 @@ export const Home: React.FC = () => {
       </section>
 
       {/* =========================================================
-          BELOW FOLD — scroll-triggered sections
+          BELOW FOLD — scroll-triggered sections (HIDDEN)
           ========================================================= */}
+      <div style={{ display: 'none' }}>
+        {/* Latest News full section */}
+        <section id="news" className="news-section">
+          <div className="grid-container">
+            <div style={{ gridColumn: 'span 12' }} className="news-heading-block">
+              <Reveal>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-terracotta)', marginBottom: '10px' }}>
+                  Updates & Announcements
+                </div>
+                <h2 className="section-title">Latest News</h2>
+              </Reveal>
+            </div>
 
-      {/* Latest News full section */}
-      <section id="news" className="news-section">
-        <div className="grid-container">
-          <div style={{ gridColumn: 'span 12' }} className="news-heading-block">
-            <Reveal>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-terracotta)', marginBottom: '10px' }}>
-                Updates & Announcements
-              </div>
-              <h2 className="section-title">Latest News</h2>
-            </Reveal>
-          </div>
-
-          <div style={{ gridColumn: 'span 7' }}>
-            <div className="news-cards-stack">
-              {newsItems.map((item, i) => (
-                <Reveal key={i} slide="left" delayClass={`delay-${(i + 1) * 100}`}>
-                  <div className="news-card">
-                    <div className="news-thumb-wrapper">
-                      <img src={item.thumb} alt={item.headline} className="news-thumb" />
-                    </div>
-                    <div>
-                      <div className="news-meta">
-                        {item.tags.map(t => <span key={t} className="news-tag">{t}</span>)}
-                        <span className="news-date">{item.date}</span>
+            <div style={{ gridColumn: 'span 7' }}>
+              <div className="news-cards-stack">
+                {newsItems.map((item, i) => (
+                  <Reveal key={i} slide="left" delayClass={`delay-${(i + 1) * 100}`}>
+                    <div className="news-card">
+                      <div className="news-thumb-wrapper">
+                        <img src={item.thumb} alt={item.headline} className="news-thumb" />
                       </div>
-                      <h3 className="news-title">{item.headline}</h3>
+                      <div>
+                        <div className="news-meta">
+                          {item.tags.map(t => <span key={t} className="news-tag">{t}</span>)}
+                          <span className="news-date">{item.date}</span>
+                        </div>
+                        <h3 className="news-title">{item.headline}</h3>
+                      </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ gridColumn: 'span 5' }}>
+              <Reveal slide="right" delayClass="delay-200" className="news-featured-block">
+                <div>
+                  <img
+                    src="/assets/author_portrait.png"
+                    alt="Featured"
+                    className="news-featured-image"
+                    style={{ filter: 'grayscale(1)' }}
+                  />
+                  <h3 className="news-featured-title">Writing in Exile: A Voice of Modern Resistance</h3>
+                  <p className="news-featured-desc">
+                    An exclusive interview on writing from European safehouses, and why literature remains the ultimate tool of truth against authoritarian regimes.
+                  </p>
+                </div>
+                <a href="#" className="btn-outline" style={{ marginTop: '24px', alignSelf: 'flex-start' }}>
+                  Read Interview
+                </a>
+              </Reveal>
             </div>
           </div>
+        </section>
 
-          <div style={{ gridColumn: 'span 5' }}>
-            <Reveal slide="right" delayClass="delay-200" className="news-featured-block">
-              <div>
-                <img
-                  src="/assets/author_portrait.png"
-                  alt="Featured"
-                  className="news-featured-image"
-                  style={{ filter: 'grayscale(1)' }}
-                />
-                <h3 className="news-featured-title">Writing in Exile: A Voice of Modern Resistance</h3>
-                <p className="news-featured-desc">
-                  An exclusive interview on writing from European safehouses, and why literature remains the ultimate tool of truth against authoritarian regimes.
+        {/* Terracotta Quote Section */}
+        <section className="terracotta-section">
+          <div className="grid-container">
+            <div style={{ gridColumn: 'span 7', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <Reveal slide="left">
+                <blockquote className="terracotta-quote">
+                  In the tunnels of the Metro, the biggest monster is always the one looking back at you in the mirror.
+                </blockquote>
+                <div className="terracotta-author">— Dmitry Glukhovsky, Metro trilogy</div>
+              </Reveal>
+            </div>
+            <div style={{ gridColumn: 'span 5' }}>
+              <Reveal slide="right" delayClass="delay-200">
+                <div className="terracotta-img-frame">
+                  <img src="/assets/cover_text.png" alt="" className="terracotta-img" />
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Dark Universe Section */}
+        <section className="dark-section">
+          <div className="grid-container">
+            <div style={{ gridColumn: 'span 12', textAlign: 'center', marginBottom: '50px' }}>
+              <Reveal>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-terracotta)', marginBottom: '10px' }}>
+                  Cross-Media Universe
+                </div>
+                <h2 className="section-title" style={{ color: '#F6F0E7' }}>Expanding the Boundaries</h2>
+              </Reveal>
+            </div>
+
+            <div style={{ gridColumn: 'span 5' }}>
+              <Reveal slide="left">
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', marginBottom: '16px' }}>A Global Phenomenon</h3>
+                <p style={{ color: 'rgba(246, 240, 231, 0.65)', lineHeight: '1.65', marginBottom: '28px', fontSize: '0.95rem' }}>
+                  From a self-published online experiment to a global franchise. The Metro series captivates audiences across continents through novels, acclaimed games, and cinematic adaptations.
                 </p>
-              </div>
-              <a href="#" className="btn-outline" style={{ marginTop: '24px', alignSelf: 'flex-start' }}>
-                Read Interview
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Terracotta Quote Section */}
-      <section className="terracotta-section">
-        <div className="grid-container">
-          <div style={{ gridColumn: 'span 7', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Reveal slide="left">
-              <blockquote className="terracotta-quote">
-                In the tunnels of the Metro, the biggest monster is always the one looking back at you in the mirror.
-              </blockquote>
-              <div className="terracotta-author">— Dmitry Glukhovsky, Metro trilogy</div>
-            </Reveal>
-          </div>
-          <div style={{ gridColumn: 'span 5' }}>
-            <Reveal slide="right" delayClass="delay-200">
-              <div className="terracotta-img-frame">
-                <img src="/assets/cover_text.png" alt="" className="terracotta-img" />
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Dark Universe Section */}
-      <section className="dark-section">
-        <div className="grid-container">
-          <div style={{ gridColumn: 'span 12', textAlign: 'center', marginBottom: '50px' }}>
-            <Reveal>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-terracotta)', marginBottom: '10px' }}>
-                Cross-Media Universe
-              </div>
-              <h2 className="section-title" style={{ color: '#F6F0E7' }}>Expanding the Boundaries</h2>
-            </Reveal>
-          </div>
-
-          <div style={{ gridColumn: 'span 5' }}>
-            <Reveal slide="left">
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', marginBottom: '16px' }}>A Global Phenomenon</h3>
-              <p style={{ color: 'rgba(246, 240, 231, 0.65)', lineHeight: '1.65', marginBottom: '28px', fontSize: '0.95rem' }}>
-                From a self-published online experiment to a global franchise. The Metro series captivates audiences across continents through novels, acclaimed games, and cinematic adaptations.
-              </p>
-              <div className="dark-stats-grid">
-                <div className="stat-item">
-                  <div className="stat-number">10M+</div>
-                  <div className="stat-label">Copies Sold</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">37</div>
-                  <div className="stat-label">Translations</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">3</div>
-                  <div className="stat-label">AAA Games</div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-          <div style={{ gridColumn: 'span 7' }}>
-            <div className="game-cards-row">
-              {[
-                { year: '2010', title: 'Metro 2033', desc: 'The survival horror shooter that launched the franchise.' },
-                { year: '2013', title: 'Last Light', desc: 'Civil war narrative within the underground stations.' },
-                { year: '2019', title: 'Metro Exodus', desc: 'Epic sandboxed journey across post-apocalyptic Russia.' },
-              ].map((g, i) => (
-                <Reveal key={g.title} slide="right" delayClass={`delay-${(i + 1) * 100}`}>
-                  <div className="game-card">
-                    <div className="game-tag">{g.year}</div>
-                    <h4 className="game-title">{g.title}</h4>
-                    <p className="game-desc">{g.desc}</p>
+                <div className="dark-stats-grid">
+                  <div className="stat-item">
+                    <div className="stat-number">10M+</div>
+                    <div className="stat-label">Copies Sold</div>
                   </div>
-                </Reveal>
-              ))}
+                  <div className="stat-item">
+                    <div className="stat-number">37</div>
+                    <div className="stat-label">Translations</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-number">3</div>
+                    <div className="stat-label">AAA Games</div>
+                  </div>
+                </div>
+              </Reveal>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="footer-section">
-        <div className="grid-container">
-          <div style={{ gridColumn: 'span 4' }}>
-            <div className="footer-logo">DG</div>
-            <p style={{ fontSize: '0.85rem', lineHeight: '1.65', maxWidth: '270px', color: 'rgba(246,240,231,0.55)' }}>
-              Creative works, publications and announcements from author Dmitry Glukhovsky.
-            </p>
-          </div>
-          <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
-            <h4>Sections</h4>
-            <ul className="footer-links">
-              <li><Link to="/books/metro-2033">Comic Chapter 1</Link></li>
-              <li><Link to="/movies">Comic Chapter 2</Link></li>
-              <li><Link to="/games">Comic Chapter 3</Link></li>
-              <li><Link to="/theater">Comic Chapter 4</Link></li>
-            </ul>
-          </div>
-          <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
-            <h4>Universe</h4>
-            <ul className="footer-links">
-              <li><a href="#">Metro Wiki</a></li>
-              <li><a href="#">4A Games</a></li>
-              <li><a href="#">Book Retailers</a></li>
-              <li><a href="#">Press Kit</a></li>
-            </ul>
-          </div>
-          <div style={{ gridColumn: 'span 4' }} className="footer-nav-col">
-            <h4>Newsletter</h4>
-            <p style={{ fontSize: '0.82rem', marginBottom: '12px', color: 'rgba(246,240,231,0.5)' }}>
-              Stay updated on new releases and event appearances.
-            </p>
-            <form className="newsletter-form" onSubmit={e => e.preventDefault()}>
-              <input type="email" placeholder="Your email address" className="newsletter-input" />
-              <button type="submit" className="newsletter-btn">Join</button>
-            </form>
-          </div>
-          <div style={{ gridColumn: 'span 12' }} className="footer-bottom">
-            <div>&copy; {new Date().getFullYear()} Dmitry Glukhovsky. All rights reserved.</div>
-            <div style={{ display: 'flex', gap: '18px' }}>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms</a>
-              <a href="#">Contact</a>
+            <div style={{ gridColumn: 'span 7' }}>
+              <div className="game-cards-row">
+                {[
+                  { year: '2010', title: 'Metro 2033', desc: 'The survival horror shooter that launched the franchise.' },
+                  { year: '2013', title: 'Last Light', desc: 'Civil war narrative within the underground stations.' },
+                  { year: '2019', title: 'Metro Exodus', desc: 'Epic sandboxed journey across post-apocalyptic Russia.' },
+                ].map((g, i) => (
+                  <Reveal key={g.title} slide="right" delayClass={`delay-${(i + 1) * 100}`}>
+                    <div className="game-card">
+                      <div className="game-tag">{g.year}</div>
+                      <h4 className="game-title">{g.title}</h4>
+                      <p className="game-desc">{g.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* Footer */}
+        <footer className="footer-section">
+          <div className="grid-container">
+            <div style={{ gridColumn: 'span 4' }}>
+              <div className="footer-logo">DG</div>
+              <p style={{ fontSize: '0.85rem', lineHeight: '1.65', maxWidth: '270px', color: 'rgba(246,240,231,0.55)' }}>
+                Creative works, publications and announcements from author Dmitry Glukhovsky.
+              </p>
+            </div>
+            <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
+              <h4>Sections</h4>
+              <ul className="footer-links">
+                <li><Link to="/books/metro-2033">Comic Chapter 1</Link></li>
+                <li><Link to="/movies">Comic Chapter 2</Link></li>
+                <li><Link to="/games">Comic Chapter 3</Link></li>
+                <li><Link to="/theater">Comic Chapter 4</Link></li>
+              </ul>
+            </div>
+            <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
+              <h4>Universe</h4>
+              <ul className="footer-links">
+                <li><a href="#">Metro Wiki</a></li>
+                <li><a href="#">4A Games</a></li>
+                <li><a href="#">Book Retailers</a></li>
+                <li><a href="#">Press Kit</a></li>
+              </ul>
+            </div>
+            <div style={{ gridColumn: 'span 4' }} className="footer-nav-col">
+              <h4>Newsletter</h4>
+              <p style={{ fontSize: '0.82rem', marginBottom: '12px', color: 'rgba(246,240,231,0.5)' }}>
+                Stay updated on new releases and event appearances.
+              </p>
+              <form className="newsletter-form" onSubmit={e => e.preventDefault()}>
+                <input type="email" placeholder="Your email address" className="newsletter-input" />
+                <button type="submit" className="newsletter-btn">Join</button>
+              </form>
+            </div>
+            <div style={{ gridColumn: 'span 12' }} className="footer-bottom">
+              <div>&copy; {new Date().getFullYear()} Dmitry Glukhovsky. All rights reserved.</div>
+              <div style={{ display: 'flex', gap: '18px' }}>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
     </motion.div>
   );
 };
