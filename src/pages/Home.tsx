@@ -26,11 +26,18 @@ const Reveal: React.FC<RevealProps> = ({ children, className = '', slide = 'up',
   return <div ref={ref} className={`${base} ${active ? 'active' : ''} ${delayClass} ${className}`}>{children}</div>;
 };
 
-/* ---------- News data ---------- */
+/* ---------- News data (Reading Documents & Artworks) ---------- */
 const newsItems = [
-  { thumb: '/assets/cover_metro2033.png', tags: ['Comic Chapter 1'], date: 'May 31, 2026', headline: 'Dmitry Glukhovsky Begins Work on a New Book' },
-  { thumb: '/assets/cover_metro2034.png', tags: ['Comic Chapter 2', 'Updates'], date: 'May 15, 2026', headline: 'Screen Adaptation of «Metro 2033» Currently in Discussion' },
-  { thumb: '/assets/cover_metro2035.png', tags: ['Comic Chapter 4'], date: 'Apr 10, 2026', headline: 'Stage Premiere of TEXT Opens in Berlin' },
+  { thumb: '/1.webp', slug: 'lolita-speaks', tags: ['Reading', 'Doc 01'], date: 'Doc 01', headline: 'Lolita Speaks' },
+  { thumb: '/2.webp', slug: 'annabel-speaks', tags: ['Reading', 'Doc 02'], date: 'Doc 02', headline: 'Annabel Speaks' },
+  { thumb: '/3.webp', slug: 'oceanids', tags: ['Reading', 'Doc 03'], date: 'Doc 03', headline: 'Oceanids' },
+  { thumb: '/4.webp', slug: 'lolitas-axe', tags: ['Reading', 'Doc 04'], date: 'Doc 04', headline: 'Lolita’s Axe' },
+  { thumb: '/5.webp', slug: 'david-bowie-is-a-motherfucker', tags: ['Reading', 'Doc 05'], date: 'Doc 05', headline: 'David Bowie is a Motherfucker' },
+  { thumb: '/6.webp', slug: 'lolitas-mother', tags: ['Reading', 'Doc 06'], date: 'Doc 06', headline: 'Lolita’s Mother' },
+  { thumb: '/7.webp', slug: 'lolitas-retribution', tags: ['Reading', 'Doc 07'], date: 'Doc 07', headline: 'Lolita’s Retribution' },
+  { thumb: '/8.webp', slug: 'humbert-humbert-the-beauty-fascist', tags: ['Reading', 'Doc 08'], date: 'Doc 08', headline: 'Humbert Humbert the beauty fascist who prostitutes a girl child' },
+  { thumb: '/9.webp', slug: 'what-humbert-humbert-did', tags: ['Reading', 'Doc 09'], date: 'Doc 09', headline: 'What Humbert Humbert did' },
+  { thumb: '/10.webp', slug: 'the-web', tags: ['Reading', 'Doc 10'], date: 'Doc 10', headline: 'The Web' },
 ];
 
 /* ---------- Works cycle tabs ---------- */
@@ -76,20 +83,20 @@ export const Home: React.FC = () => {
         <aside className="hero-news-col">
           <div className="hero-news-header">Latest news</div>
           <div className="hero-news-items">
-            {newsItems.map((item, i) => (
-              <a key={i} href="#news" className="hero-news-item">
+            {newsItems.slice(0, 3).map((item, i) => (
+              <Link key={i} to={`/read/${item.slug}`} className="hero-news-item">
                 <img src={item.thumb} alt={item.headline} className="hero-news-thumb" />
                 <div className="hero-news-tags">
                   {item.tags.map(t => <span key={t} className="hero-news-tag">{t}</span>)}
                   <span className="hero-news-date">| {item.date}</span>
                 </div>
                 <div className="hero-news-headline">{item.headline}</div>
-              </a>
+              </Link>
             ))}
           </div>
-          <a href="#news" className="hero-news-readall">
-            Read all news <ArrowRight size={11} />
-          </a>
+          <Link to="/read/lolita-speaks" className="hero-news-readall">
+            Read all documents <ArrowRight size={11} />
+          </Link>
         </aside>
 
         {/* CENTER: Name + portrait + works progress */}
@@ -156,7 +163,7 @@ export const Home: React.FC = () => {
             <div className="news-cards-stack">
               {newsItems.map((item, i) => (
                 <Reveal key={i} slide="left" delayClass={`delay-${(i + 1) * 100}`}>
-                  <div className="news-card">
+                  <Link to={`/read/${item.slug}`} className="news-card" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="news-thumb-wrapper">
                       <img src={item.thumb} alt={item.headline} className="news-thumb" />
                     </div>
@@ -167,7 +174,7 @@ export const Home: React.FC = () => {
                       </div>
                       <h3 className="news-title">{item.headline}</h3>
                     </div>
-                  </div>
+                  </Link>
                 </Reveal>
               ))}
             </div>
@@ -177,19 +184,18 @@ export const Home: React.FC = () => {
             <Reveal slide="right" delayClass="delay-200" className="news-featured-block">
               <div>
                 <img
-                  src="/assets/author_portrait.png"
-                  alt="Featured"
+                  src="/1.webp"
+                  alt="Lolita Speaks"
                   className="news-featured-image"
-                  style={{ filter: 'grayscale(1)' }}
                 />
-                <h3 className="news-featured-title">Writing in Exile: A Voice of Modern Resistance</h3>
+                <h3 className="news-featured-title">Featured Reading: Lolita Speaks</h3>
                 <p className="news-featured-desc">
-                  An exclusive interview on writing from European safehouses, and why literature remains the ultimate tool of truth against authoritarian regimes.
+                  Explore the companion literary readings and original visual studies exploring Nabokov’s texts and modern critical narratives.
                 </p>
               </div>
-              <a href="#" className="btn-outline" style={{ marginTop: '24px', alignSelf: 'flex-start' }}>
-                Read Interview
-              </a>
+              <Link to="/read/lolita-speaks" className="btn-outline" style={{ marginTop: '24px', alignSelf: 'flex-start' }}>
+                Open Book Reader
+              </Link>
             </Reveal>
           </div>
         </div>

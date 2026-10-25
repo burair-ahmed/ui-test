@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Home } from '../pages/Home';
 import { BookDetail } from '../pages/BookDetail';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
+import { ReadPage } from '../pages/ReadPage';
 
 export const AnimatedRoutes: React.FC = () => {
   const location = useLocation();
@@ -17,6 +18,10 @@ export const AnimatedRoutes: React.FC = () => {
         {/* Books index redirects to Metro 2033 */}
         <Route path="/books" element={<Navigate to="/books/metro-2033" replace />} />
         <Route path="/books/:slug" element={<BookDetail />} />
+        
+        {/* Reading Pages */}
+        <Route path="/read" element={<Navigate to="/read/lolita-speaks" replace />} />
+        <Route path="/read/:slug" element={<ReadPage />} />
         
         {/* Other Sections */}
         <Route path="/movies" element={<PlaceholderPage title="Comic Chapter 2" count={3} />} />

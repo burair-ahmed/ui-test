@@ -343,7 +343,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 36px;               /* thin column width */
+  width: 32px;               /* sleek column width for 10 documents */
   padding-top: 14px;
   padding-bottom: 14px;
   border-left: 1px solid rgba(21, 32, 33, 0.08);
@@ -421,10 +421,10 @@ button {
   display: none;
 }
 
-/* Adjust main content to make room for the 5 strips (5 × 36px = 180px) */
+/* Adjust main content to make room for the 10 strips (10 × 32px = 320px) */
 .main-wrapper {
   margin-top: 48px;
-  margin-right: 180px;
+  margin-right: 320px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -446,18 +446,25 @@ button {
     padding-top: 0;
     border-top: 1px solid rgba(21, 32, 33, 0.08);
     z-index: 200;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .category-rail::-webkit-scrollbar {
+    display: none;
   }
 
   .rail-strip {
     flex: 1;
+    min-width: 36px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 3px;
     width: auto;
     border-left: none;
     border-right: 1px solid rgba(21, 32, 33, 0.08);
-    padding: 0 8px;
+    padding: 0 4px;
   }
 
   .rail-strip:last-child {
