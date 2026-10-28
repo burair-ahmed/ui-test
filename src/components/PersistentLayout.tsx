@@ -32,10 +32,14 @@ export const PersistentLayout: React.FC<PersistentLayoutProps> = ({ children }) 
         {/* Left branding */}
         <Link
           to="/"
-          className={`navbar-logo ${isHome ? 'hidden' : 'visible'}`}
-          aria-label="Home"
+          className="navbar-logo"
+          aria-label="Gabrielle Everall"
         >
-          DG
+          <img
+            src="/logo.png"
+            alt="Gabrielle Everall"
+            className="navbar-logo-img"
+          />
         </Link>
 
         {/* Center label */}

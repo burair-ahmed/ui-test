@@ -30,41 +30,74 @@ export const PageLoader: React.FC = () => {
         left: 0,
         width: '100vw',
         height: '100vh',
-        backgroundColor: '#152021',
+        backgroundColor: '#F6F0E7',
         zIndex: 9999,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: 'opacity 0.3s ease-in-out',
+        transition: 'opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)',
         opacity: visible ? 1 : 0,
         pointerEvents: 'none',
       }}
     >
       <div
         style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: '3rem',
-          color: '#F6F0E7',
-          fontWeight: 700,
-          letterSpacing: '0.1em',
-          transform: visible ? 'translateY(0)' : 'translateY(-15px)',
-          transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          transform: visible ? 'scale(1) translateY(0)' : 'scale(0.96) translateY(-12px)',
+          transition: 'transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease',
+          opacity: visible ? 1 : 0,
         }}
       >
-        DG
+        <img
+          src="/logo.png"
+          alt="Gabrielle Everall"
+          style={{
+            width: '110px',
+            height: '110px',
+            objectFit: 'contain',
+            filter: 'drop-shadow(0 4px 16px rgba(21, 32, 33, 0.08))',
+            marginBottom: '16px',
+          }}
+        />
+        <div
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '1.25rem',
+            color: '#152021',
+            fontWeight: 600,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Gabrielle Everall
+        </div>
+        <div
+          style={{
+            fontFamily: "'Outfit', sans-serif",
+            fontSize: '0.72rem',
+            color: 'rgba(21, 32, 33, 0.55)',
+            letterSpacing: '0.28em',
+            textTransform: 'uppercase',
+            marginTop: '6px',
+          }}
+        >
+          Author
+        </div>
+        <div
+          style={{
+            marginTop: '16px',
+            height: '2px',
+            width: '60px',
+            backgroundColor: '#C85A32',
+            transform: visible ? 'scaleX(1)' : 'scaleX(0)',
+            transformOrigin: 'center',
+            transition: 'transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+          }}
+        />
       </div>
-      <div
-        style={{
-          marginTop: '10px',
-          height: '1px',
-          width: '50px',
-          backgroundColor: '#CE9D87',
-          transform: visible ? 'scaleX(1)' : 'scaleX(0)',
-          transformOrigin: 'center',
-          transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
-        }}
-      />
     </div>
   );
 };

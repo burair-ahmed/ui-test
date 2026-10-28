@@ -272,12 +272,24 @@ button {
 }
 
 .navbar-logo {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  color: var(--text-dark);
-  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  line-height: 1;
+}
+
+.navbar-logo:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+.navbar-logo-img {
+  height: 34px;
+  width: auto;
+  max-width: 90px;
+  object-fit: contain;
+  display: block;
 }
 
 .navbar-logo.hidden {

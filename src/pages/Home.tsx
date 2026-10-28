@@ -94,7 +94,7 @@ export const Home: React.FC = () => {
               </Link>
             ))}
           </div>
-          <Link to="/read/lolita-speaks" className="hero-news-readall">
+          <Link to="/chapters" className="hero-news-readall">
             Read all documents <ArrowRight size={11} />
           </Link>
         </aside>
@@ -117,7 +117,7 @@ export const Home: React.FC = () => {
               className="hero-portrait-img"
             />
             {/* Signature scrawl */}
-            <div className="hero-signature" aria-hidden="true">DG~</div>
+            <div className="hero-signature" aria-hidden="true">GE~</div>
           </div>
 
           {/* Works progress cycle */}
@@ -281,7 +281,9 @@ export const Home: React.FC = () => {
         <footer className="footer-section">
           <div className="grid-container">
             <div style={{ gridColumn: 'span 4' }}>
-              <div className="footer-logo">DG</div>
+              <div className="footer-logo">
+                <img src="/logo.png" alt="Gabrielle Everall" className="footer-logo-img" />
+              </div>
               <p style={{ fontSize: '0.85rem', lineHeight: '1.65', maxWidth: '270px', color: 'rgba(246,240,231,0.55)' }}>
                 Creative works, publications and announcements from author Gabrielle Everall.
               </p>

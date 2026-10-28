@@ -512,11 +512,18 @@
 }
 
 .footer-logo {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--color-cream);
-  font-weight: 700;
   margin-bottom: 16px;
+  display: inline-block;
+}
+
+.footer-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  background: rgba(246, 240, 231, 0.95);
+  padding: 6px 12px;
+  border-radius: 4px;
 }
 
 .footer-nav-col h4 {
@@ -599,19 +606,93 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
   }
-  .hero-news-col {
-    border-right: none;
-    border-bottom: 1px solid rgba(21, 32, 33, 0.07);
+
+  /* Author title and image COME FIRST */
+  .hero-center-col {
+    order: 1;
+    width: 100%;
+    padding: 28px 18px 32px;
+    box-sizing: border-box;
   }
+
   .hero-name-display {
-    font-size: 3.5rem;
+    font-size: clamp(2.4rem, 8.5vw, 3.8rem);
     white-space: normal;
+    text-align: center;
+    margin-bottom: 8px;
+    word-break: break-word;
   }
+
+  .hero-lang-selector {
+    margin-bottom: 20px;
+  }
+
+  .hero-portrait-frame {
+    width: min(290px, 75%);
+    aspect-ratio: 3/4;
+    margin: 0 auto;
+  }
+
+  .hero-works-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 24px auto 0;
+    padding-top: 16px;
+  }
+
+  .hero-works-row {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .hero-works-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Other things (Latest News) COME AFTER */
+  .hero-news-col {
+    order: 2;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid rgba(21, 32, 33, 0.08);
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  .hero-news-header {
+    padding: 18px 20px 12px;
+  }
+
+  .hero-news-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    width: 100%;
+  }
+
+  .hero-news-item {
+    border-right: 1px solid rgba(21, 32, 33, 0.07);
+    padding: 16px 20px;
+  }
+
+  .hero-news-thumb {
+    aspect-ratio: 16/9;
+    max-height: 200px;
+  }
+
+  .hero-news-readall {
+    padding: 18px 20px;
+    justify-content: center;
+  }
+
   .news-card {
     grid-template-columns: 1fr;
   }
