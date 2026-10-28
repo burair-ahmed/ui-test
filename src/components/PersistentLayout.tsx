@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { LayoutGrid, Bookmark, Pin, FileText, BookOpen } from 'lucide-react';
+import { LayoutGrid, Bookmark, Pin, BookOpen } from 'lucide-react';
 
 interface PersistentLayoutProps {
   children: React.ReactNode;
