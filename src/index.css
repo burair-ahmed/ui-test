@@ -421,10 +421,10 @@ button {
   display: none;
 }
 
-/* Adjust main content to make room for the 10 strips (10 × 32px = 320px) */
+/* Adjust main content to make room for 1 strip (1 × 32px = 32px) */
 .main-wrapper {
   margin-top: 48px;
-  margin-right: 320px;
+  margin-right: 32px;
   flex: 1;
   display: flex;
   flex-direction: column;

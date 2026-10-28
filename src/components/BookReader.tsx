@@ -12,6 +12,7 @@ interface BookReaderProps {
 export const BookReader: React.FC<BookReaderProps> = ({ document: doc }) => {
   const navigate = useNavigate();
   const [shareCopied, setShareCopied] = useState<boolean>(false);
+  const [mobileView, setMobileView] = useState<'artwork' | 'text'>('text');
 
   const currentIndex = readingDocuments.findIndex((d) => d.id === doc.id);
   const prevDoc = currentIndex > 0 ? readingDocuments[currentIndex - 1] : null;
@@ -66,31 +67,6 @@ export const BookReader: React.FC<BookReaderProps> = ({ document: doc }) => {
 
   return (
     <div className="reader-page-layout">
-      {/* Pinned Left Vertical Navigation Rail */}
-      <aside className="reader-left-rail">
-        <div className="rail-label-vertical">
-          Reading Series &middot; 10
-        </div>
-        
-        {/* Dot paginator representing the 10 documents */}
-        <div className="pagination-dots-stack">
-          {readingDocuments.map((docItem) => (
-            <Link
-              key={docItem.id}
-              to={`/read/${docItem.slug}`}
-              className={`pagination-dot-link ${docItem.id === doc.id ? 'active' : ''}`}
-              title={`${String(docItem.id).padStart(2, '0')}. ${docItem.shortTitle}`}
-              aria-label={`Go to ${docItem.title}`}
-            />
-          ))}
-        </div>
-
-        {/* Small footer index indicator */}
-        <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8rem', fontWeight: 600, opacity: 0.5 }}>
-          {String(doc.id).padStart(2, '0')} / 10
-        </div>
-      </aside>
-
       <motion.div
         className="reader-page-wrapper"
         initial={{ opacity: 0 }}
@@ -164,6 +140,22 @@ export const BookReader: React.FC<BookReaderProps> = ({ document: doc }) => {
         ))}
       </div>
 
+      {/* Mobile Artwork / Text Tab Switcher — only visible at ≤900px via CSS */}
+      <div className="reader-mobile-view-tabs">
+        <button
+          className={`mobile-tab-btn ${mobileView === 'artwork' ? 'active' : ''}`}
+          onClick={() => setMobileView('artwork')}
+        >
+          🖼 Artwork
+        </button>
+        <button
+          className={`mobile-tab-btn ${mobileView === 'text' ? 'active' : ''}`}
+          onClick={() => setMobileView('text')}
+        >
+          📄 Reading
+        </button>
+      </div>
+
       {/* The Central Open Book */}
       <div className="book-stage">
         <div className="book-cover-wrapper">
@@ -171,7 +163,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ document: doc }) => {
           <div className="book-ribbon" aria-hidden="true" />
 
           {/* Book Pages Container */}
-          <div className="book-pages-container">
+          <div className={`book-pages-container show-${mobileView}`}>
             {/* Center Spine Crease Effect */}
             <div className="book-spine-crease" aria-hidden="true" />
 

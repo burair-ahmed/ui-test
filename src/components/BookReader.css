@@ -1,52 +1,36 @@
-/* Scoped styles for the Book Reader */
+/* ============================================================
+   Book Reader — full-width, clean layout
+   ============================================================ */
 
 .reader-page-layout {
-  display: grid;
-  grid-template-columns: 80px 1fr; /* Pinned left rail, then main reading area */
+  width: 100%;
   min-height: calc(100vh - 48px);
-  position: relative;
-  background-color: var(--color-cream);
-}
-
-/* Pinned Left Pagination Rail */
-.reader-left-rail {
-  position: fixed;
-  top: 48px;
-  left: 0;
-  bottom: 0;
-  width: 80px;
-  border-right: 1px solid rgba(21, 32, 33, 0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 0;
-  z-index: 80;
   background-color: var(--color-cream);
 }
 
 .reader-page-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: stretch;       /* let children span full width */
   min-height: calc(100vh - 48px);
-  padding: 30px 24px 60px;
+  padding: 24px 20px 60px;
   background-color: var(--color-cream);
-  position: relative;
   width: 100%;
+  box-sizing: border-box;
 }
 
-/* Top Controller Bar */
+/* ============================================================
+   Top Controller Bar
+   ============================================================ */
 .reader-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1100px;
   width: 100%;
-  margin-bottom: 24px;
-  padding: 0 8px;
+  margin-bottom: 16px;
+  padding: 0;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .reader-breadcrumb {
@@ -58,6 +42,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
+  flex-wrap: wrap;
 }
 
 .reader-breadcrumb-link {
@@ -80,11 +65,12 @@
   letter-spacing: 0.08em;
 }
 
-/* Action Controls (Prev, Next, List, Share) */
+/* Action Controls */
 .reader-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .reader-nav-btn {
@@ -92,7 +78,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 38px;
+  height: 36px;
   padding: 0 14px;
   border: 1px solid rgba(21, 32, 33, 0.18);
   background-color: transparent;
@@ -119,29 +105,45 @@
 }
 
 .reader-icon-btn {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   padding: 0;
 }
 
-/* Quick Document Switcher Drawer / Bar */
+/* ============================================================
+   Quick Document Switcher Strip — scrollable, full width
+   ============================================================ */
 .reader-quick-strip {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  max-width: 1100px;
   width: 100%;
   margin-bottom: 20px;
   overflow-x: auto;
-  padding: 6px 4px;
+  padding: 4px 0 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(21, 32, 33, 0.15) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reader-quick-strip::-webkit-scrollbar {
+  height: 3px;
+}
+
+.reader-quick-strip::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reader-quick-strip::-webkit-scrollbar-thumb {
+  background-color: rgba(21, 32, 33, 0.15);
+  border-radius: 4px;
 }
 
 .reader-doc-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 14px;
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
@@ -152,6 +154,7 @@
   background-color: transparent;
   transition: var(--transition-smooth);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .reader-doc-pill:hover {
@@ -167,32 +170,31 @@
   box-shadow: 0 4px 12px rgba(21, 32, 33, 0.15);
 }
 
-/* ========================================================
-   THE BOOK SHELL & OPEN BOOK DESIGN
-   ======================================================== */
+/* ============================================================
+   THE BOOK SHELL — full width open-book
+   ============================================================ */
 .book-stage {
   perspective: 1600px;
   width: 100%;
-  max-width: 1120px;
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-/* Hardcover outer border & binding shadows */
+/* Hardcover outer binding */
 .book-cover-wrapper {
   position: relative;
   width: 100%;
-  background: #182324; /* Rich leatherette dark charcoal matching --color-navbar */
+  background: #182324;
   border-radius: 6px;
-  padding: 10px 10px 14px 10px;
-  box-shadow: 
+  padding: 10px 10px 14px;
+  box-shadow:
     0 30px 60px -15px rgba(10, 18, 19, 0.45),
     0 15px 30px -10px rgba(10, 18, 19, 0.25),
     inset 0 1px 1px rgba(255, 255, 255, 0.12);
 }
 
-/* Decorative silk ribbon bookmark */
+/* Silk ribbon bookmark */
 .book-ribbon {
   position: absolute;
   top: -8px;
@@ -208,7 +210,7 @@
   transition: var(--transition-smooth);
 }
 
-/* Page Stack container */
+/* Two-page spread */
 .book-pages-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -218,12 +220,12 @@
   border-radius: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     inset 0 0 30px rgba(21, 32, 33, 0.05),
     0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
-/* Spine / Center fold gutter with dual lighting effect */
+/* Spine crease */
 .book-spine-crease {
   position: absolute;
   top: 0;
@@ -243,9 +245,9 @@
   z-index: 15;
 }
 
-/* ========================================================
-   LEFT PAGE: ARTWORK PRESENTATION
-   ======================================================== */
+/* ============================================================
+   LEFT PAGE: Artwork
+   ============================================================ */
 .book-page {
   padding: 48px 44px 36px;
   display: flex;
@@ -290,7 +292,7 @@
   border: 1px solid rgba(21, 32, 33, 0.1);
   padding: 16px;
   border-radius: 2px;
-  box-shadow: 
+  box-shadow:
     inset 0 2px 8px rgba(0, 0, 0, 0.06),
     0 1px 2px rgba(255, 255, 255, 0.6);
   position: relative;
@@ -298,14 +300,13 @@
 
 .artwork-img-element {
   max-width: 100%;
-  max-height: 440px;
+  max-height: 500px;
   height: auto;
   width: auto;
   object-fit: contain;
   display: block;
   box-shadow: 0 8px 24px -6px rgba(21, 32, 33, 0.25);
   border-radius: 1px;
-  transition: transform 0.5s ease;
 }
 
 .artwork-caption-strip {
@@ -324,9 +325,9 @@
   font-weight: 700;
 }
 
-/* ========================================================
-   RIGHT PAGE: READING DOCUMENT
-   ======================================================== */
+/* ============================================================
+   RIGHT PAGE: Reading Content
+   ============================================================ */
 .book-page-right {
   border-left: 1px solid rgba(21, 32, 33, 0.04);
   background: linear-gradient(
@@ -341,28 +342,22 @@
 .book-reading-content {
   flex: 1;
   overflow-y: auto;
-  padding-right: 10px;
+  padding-right: 8px;
   padding-bottom: 10px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(21, 32, 33, 0.3) transparent;
+  scrollbar-color: rgba(21, 32, 33, 0.2) transparent;
 }
 
-.book-reading-content::-webkit-scrollbar {
-  width: 4px;
-}
-
-.book-reading-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+.book-reading-content::-webkit-scrollbar { width: 4px; }
+.book-reading-content::-webkit-scrollbar-track { background: transparent; }
 .book-reading-content::-webkit-scrollbar-thumb {
-  background-color: rgba(21, 32, 33, 0.25);
+  background-color: rgba(21, 32, 33, 0.2);
   border-radius: 4px;
 }
 
 .book-doc-title {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-navbar);
@@ -380,10 +375,11 @@
   border-bottom: 1px solid rgba(21, 32, 33, 0.08);
 }
 
-/* Prose and typography */
+.prose-content-block { width: 100%; }
+
 .reader-paragraph {
   font-family: var(--font-sans);
-  font-size: 1.02rem;
+  font-size: 1rem;
   line-height: 1.85;
   color: rgba(21, 32, 33, 0.88);
   margin-bottom: 18px;
@@ -391,13 +387,11 @@
   text-justify: inter-word;
 }
 
-.reader-paragraph:last-child {
-  margin-bottom: 0;
-}
+.reader-paragraph:last-child { margin-bottom: 0; }
 
 .reader-heading-para {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--color-navbar);
   margin-top: 24px;
@@ -405,11 +399,9 @@
   line-height: 1.3;
 }
 
-.reader-heading-para:first-child {
-  margin-top: 0;
-}
+.reader-heading-para:first-child { margin-top: 0; }
 
-/* Poem specific styling (Document 6) */
+/* Poem */
 .poem-container {
   display: flex;
   flex-direction: column;
@@ -419,25 +411,18 @@
 
 .poem-line {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   line-height: 1.9;
   color: var(--color-navbar);
   font-style: italic;
   letter-spacing: 0.02em;
 }
 
-/* Formatted runs */
-.run-bold {
-  font-weight: 700;
-  color: var(--color-navbar);
-}
+/* Text runs */
+.run-bold  { font-weight: 700; color: var(--color-navbar); }
+.run-italic { font-style: italic; color: var(--color-navbar); }
 
-.run-italic {
-  font-style: italic;
-  color: var(--color-navbar);
-}
-
-/* Page Footer with Page Number */
+/* Page Footer */
 .page-footer-strip {
   display: flex;
   justify-content: space-between;
@@ -459,15 +444,15 @@
   color: var(--color-navbar);
 }
 
-/* Bottom Pagination & Document Navigator */
+/* ============================================================
+   Bottom Prev / Next Navigator
+   ============================================================ */
 .reader-bottom-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1100px;
   width: 100%;
   margin-top: 28px;
-  padding: 0 10px;
   gap: 16px;
 }
 
@@ -484,57 +469,112 @@
   transition: var(--transition-smooth);
 }
 
-.reader-bottom-link:hover {
-  color: var(--color-terracotta);
-  transform: translateX(3px);
-}
+.reader-bottom-link:hover        { color: var(--color-terracotta); transform: translateX(3px); }
+.reader-bottom-link.prev:hover   { transform: translateX(-3px); }
 
-.reader-bottom-link.prev:hover {
-  transform: translateX(-3px);
-}
+/* Mobile tab toggle — hidden on desktop */
+.reader-mobile-view-tabs { display: none; }
 
-.reader-mobile-view-tabs {
-  display: none;
-}
-
-/* ========================================================
-   RESPONSIVE: MOBILE & TABLET (<= 900px)
-   ======================================================== */
-@media (max-width: 900px) {
-  .reader-page-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .reader-left-rail {
-    display: none;
-  }
-
+/* ============================================================
+   RESPONSIVE — Tablet (≤ 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
   .reader-page-wrapper {
-    padding: 20px 14px 80px;
-  }
-
-  .reader-top-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .reader-breadcrumb {
-    font-size: 0.72rem;
-  }
-
-  /* Single page view on mobile */
-  .book-pages-container {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .book-spine-crease {
-    display: none;
+    padding: 20px 14px 60px;
   }
 
   .book-page {
-    padding: 32px 20px 24px;
+    padding: 36px 28px 28px;
+  }
+
+  .book-pages-container {
+    min-height: 560px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .reader-page-wrapper {
+    padding: 14px 10px 80px;
+  }
+
+  /* Top bar: stack breadcrumb above controls */
+  .reader-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .reader-breadcrumb {
+    font-size: 0.68rem;
+  }
+
+  /* Pill strip */
+  .reader-doc-pill {
+    font-size: 0.68rem;
+    padding: 5px 10px;
+  }
+
+  /* Artwork / Text tab switcher */
+  .reader-mobile-view-tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(21, 32, 33, 0.08);
+    background: #FAF6EF;
+    border-radius: 4px 4px 0 0;
+    overflow: hidden;
+  }
+
+  .mobile-tab-btn {
+    flex: 1;
+    padding: 10px 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(21, 32, 33, 0.45);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-tab-btn.active {
+    color: var(--color-navbar);
+    border-bottom-color: var(--color-terracotta);
+    background: rgba(21, 32, 33, 0.02);
+  }
+
+  /* Switch to single stacked page */
+  .book-cover-wrapper {
+    padding: 5px 5px 8px;
+    border-radius: 4px;
+  }
+
+  .book-pages-container {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .book-spine-crease { display: none; }
+
+  /* CSS tab toggle */
+  .book-page-left,
+  .book-page-right { display: flex; }
+
+  .book-pages-container.show-artwork .book-page-right { display: none; }
+  .book-pages-container.show-text    .book-page-left  { display: none; }
+
+  .book-page {
+    padding: 18px 16px 16px;
   }
 
   .book-page-left {
@@ -548,28 +588,64 @@
     background: #FAF6EF;
   }
 
-  .book-doc-title {
-    font-size: 1.7rem;
-    text-align: left;
-  }
+  .artwork-frame-outer { padding: 8px; }
 
   .artwork-img-element {
-    max-height: 320px;
+    max-height: 250px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .book-doc-title {
+    font-size: 1.35rem;
+    text-align: left;
+    margin-bottom: 12px;
   }
 
   .reader-paragraph {
-    font-size: 0.95rem;
-    line-height: 1.75;
+    font-size: 0.93rem;
+    line-height: 1.76;
     text-align: left;
+    margin-bottom: 14px;
   }
 
+  .reader-heading-para {
+    font-size: 1.05rem;
+    margin-top: 14px;
+    margin-bottom: 8px;
+  }
+
+  .poem-container { padding: 8px 0 12px 12px; }
+  .poem-line { font-size: 1rem; line-height: 1.7; }
+
+  .page-header-strip {
+    font-size: 0.58rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .page-footer-strip {
+    font-size: 0.58rem;
+    margin-top: 12px;
+    padding-top: 8px;
+  }
+
+  /* Bottom nav: full-width tappable buttons */
   .reader-bottom-nav {
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 16px;
   }
 
-  .book-cover-wrapper {
-    padding: 6px 6px 10px 6px;
+  .reader-bottom-link {
+    justify-content: center;
+    padding: 12px 16px;
+    border: 1px solid rgba(21, 32, 33, 0.12);
+    border-radius: 4px;
+    font-size: 0.78rem;
   }
+
+  .reader-bottom-link:hover       { transform: none; background: rgba(21, 32, 33, 0.04); }
+  .reader-bottom-link.prev:hover  { transform: none; }
 }

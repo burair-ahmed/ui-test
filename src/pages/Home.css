@@ -61,10 +61,12 @@
 .hero-news-thumb {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   margin-bottom: 10px;
-  background-color: var(--color-navbar);
+  background-color: #1a2627;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 .hero-news-tags {
@@ -179,7 +181,6 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  mix-blend-mode: multiply;
 }
 
 /* Signature overlay */

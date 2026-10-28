@@ -1,8 +1,7 @@
 /* Book Detail Page Styles */
 
 .book-detail-container {
-  display: grid;
-  grid-template-columns: 80px 1fr; /* Left rail, then main content */
+  display: block;
   min-height: calc(100vh - 48px);
   position: relative;
   background-color: var(--color-cream);
@@ -67,12 +66,11 @@
 /* Split Column Main Layout */
 .book-main-content {
   display: grid;
-  grid-template-columns: 4.5fr 7.5fr; /* 4.5 columns for cover, 7.5 for info */
-  padding: 80px 40px;
+  grid-template-columns: 4.5fr 7.5fr;
+  padding: 60px 40px 60px calc(80px + 40px); /* offset fixed left rail */
   gap: 60px;
-  max-width: 1300px;
-  margin: 0 auto;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Left Column: Cover Art */

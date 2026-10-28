@@ -5,6 +5,7 @@ import { Home } from '../pages/Home';
 import { BookDetail } from '../pages/BookDetail';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { ReadPage } from '../pages/ReadPage';
+import { ChaptersPage } from '../pages/ChaptersPage';
 
 export const AnimatedRoutes: React.FC = () => {
   const location = useLocation();
@@ -20,7 +21,8 @@ export const AnimatedRoutes: React.FC = () => {
         <Route path="/books/:slug" element={<BookDetail />} />
         
         {/* Reading Pages */}
-        <Route path="/read" element={<Navigate to="/read/lolita-speaks" replace />} />
+        <Route path="/chapters" element={<ChaptersPage />} />
+        <Route path="/read" element={<Navigate to="/chapters" replace />} />
         <Route path="/read/:slug" element={<ReadPage />} />
         
         {/* Other Sections */}

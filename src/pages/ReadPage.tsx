@@ -12,9 +12,9 @@ export const ReadPage: React.FC = () => {
   // Synchronize browser title
   useEffect(() => {
     if (activeDoc) {
-      document.title = `${activeDoc.title} | Dmitry Glukhovsky`;
+      document.title = `${activeDoc.title} | Gabrielle Everall`;
     } else {
-      document.title = 'Reading Archive | Dmitry Glukhovsky';
+      document.title = 'Reading Archive | Gabrielle Everall';
     }
   }, [activeDoc]);
 

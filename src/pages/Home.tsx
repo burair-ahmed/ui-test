@@ -102,7 +102,7 @@ export const Home: React.FC = () => {
         {/* CENTER: Name + portrait + works progress */}
         <div className="hero-center-col">
           {/* Giant name */}
-          <h1 className="hero-name-display">Dmitry Glukhovsky</h1>
+          <h1 className="hero-name-display">Gabrielle Everall</h1>
 
           {/* Language selector */}
           <div className="hero-lang-selector">
@@ -112,8 +112,8 @@ export const Home: React.FC = () => {
           {/* Portrait */}
           <div className="hero-portrait-frame">
             <img
-              src="/assets/author_portrait.png"
-              alt="Dmitry Glukhovsky"
+              src="/author.jpg"
+              alt="Gabrielle Everall"
               className="hero-portrait-img"
             />
             {/* Signature scrawl */}
@@ -209,7 +209,7 @@ export const Home: React.FC = () => {
                 <blockquote className="terracotta-quote">
                   In the tunnels of the Metro, the biggest monster is always the one looking back at you in the mirror.
                 </blockquote>
-                <div className="terracotta-author">— Dmitry Glukhovsky, Metro trilogy</div>
+                <div className="terracotta-author">— Gabrielle Everall</div>
               </Reveal>
             </div>
             <div style={{ gridColumn: 'span 5' }}>
@@ -283,7 +283,7 @@ export const Home: React.FC = () => {
             <div style={{ gridColumn: 'span 4' }}>
               <div className="footer-logo">DG</div>
               <p style={{ fontSize: '0.85rem', lineHeight: '1.65', maxWidth: '270px', color: 'rgba(246,240,231,0.55)' }}>
-                Creative works, publications and announcements from author Dmitry Glukhovsky.
+                Creative works, publications and announcements from author Gabrielle Everall.
               </p>
             </div>
             <div style={{ gridColumn: 'span 2' }} className="footer-nav-col">
@@ -315,7 +315,7 @@ export const Home: React.FC = () => {
               </form>
             </div>
             <div style={{ gridColumn: 'span 12' }} className="footer-bottom">
-              <div>&copy; {new Date().getFullYear()} Dmitry Glukhovsky. All rights reserved.</div>
+              <div>&copy; {new Date().getFullYear()} Gabrielle Everall. All rights reserved.</div>
               <div style={{ display: 'flex', gap: '18px' }}>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms</a>

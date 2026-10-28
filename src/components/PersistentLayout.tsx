@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { LayoutGrid, Bookmark, Pin, FileText } from 'lucide-react';
-import { readingDocuments } from '../data/readingData';
+import { LayoutGrid, Bookmark, Pin, FileText, BookOpen } from 'lucide-react';
 
 interface PersistentLayoutProps {
   children: React.ReactNode;
@@ -11,13 +10,15 @@ export const PersistentLayout: React.FC<PersistentLayoutProps> = ({ children }) 
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  // Reading documents for the right vertical navigation rail (replacing Comic Chapter 1,2,3,4,5)
-  const navItems = readingDocuments.map((doc) => ({
-    label: doc.shortTitle,
-    count: String(doc.id).padStart(2, '0'),
-    path: `/read/${doc.slug}`,
-    activeMatch: `/read/${doc.slug}`,
-  }));
+  // Single Chapters nav item replacing the 10 individual document strips
+  const navItems = [
+    {
+      label: 'Chapters',
+      count: '10',
+      path: '/chapters',
+      activeMatch: '/chapters',
+    },
+  ];
 
   // Utility checking if nav item matches current path
   const isItemActive = (pathMatch: string) => {
@@ -40,7 +41,7 @@ export const PersistentLayout: React.FC<PersistentLayoutProps> = ({ children }) 
         {/* Center label */}
         {isHome && (
           <div className="navbar-center-label">
-            Screenwriter
+            Author
           </div>
         )}
         {!isHome && (
@@ -54,7 +55,7 @@ export const PersistentLayout: React.FC<PersistentLayoutProps> = ({ children }) 
           <button className="nav-util-btn" title="View Mode"><LayoutGrid size={18} /></button>
           <button className="nav-util-btn" title="Pinned Items"><Pin size={18} /></button>
           <button className="nav-util-btn" title="Bookmarks"><Bookmark size={18} /></button>
-          <Link to="/read/lolita-speaks" className="nav-util-btn" title="Documents"><FileText size={18} /></Link>
+          <Link to="/chapters" className="nav-util-btn" title="Chapters"><BookOpen size={18} /></Link>
         </div>
       </nav>
 
